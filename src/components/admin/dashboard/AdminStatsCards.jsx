@@ -15,7 +15,7 @@ const AdminStatsCards = ({ stats }) => {
       title: '오늘 예약',
       value: stats.todayBookings || 0,
       icon: '📅',
-      color: '#2563eb',
+      color: '#14b8a6',
       change: '+12%',
       changeType: 'positive',
     },

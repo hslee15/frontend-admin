@@ -66,9 +66,16 @@ body {
   &.btn-primary {
     background-color: $primary-color;
     color: $text-white;
+    font-weight: 600;
 
     &:hover:not(:disabled) {
-      opacity: 0.9;
+      background-color: $primary-color-hover;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
     }
   }
 
@@ -87,6 +94,22 @@ body {
 
     &:hover:not(:disabled) {
       opacity: 0.9;
+    }
+  }
+
+  &.btn-warning {
+    background-color: $warning-color;
+    color: $text-white;
+    font-weight: 600;
+
+    &:hover:not(:disabled) {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
     }
   }
 
@@ -168,7 +191,7 @@ table {
     &:focus {
       outline: none;
       border-color: $primary-color;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      box-shadow: 0 0 0 3px $primary-color-light;
     }
 
     &:disabled {

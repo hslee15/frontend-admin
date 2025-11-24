@@ -16,7 +16,6 @@ import AdminCouponListPage from "../pages/admin/AdminCouponListPage";
 import AdminCouponCreatePage from "../pages/admin/AdminCouponCreatePage";
 import AdminCouponEditPage from "../pages/admin/AdminCouponEditPage";
 import AdminSettingsPage from "../pages/admin/AdminSettingsPage";
-import AdminMyProfilePage from "../pages/admin/AdminMyProfilePage";
 
 const adminRoutes = [
   {
@@ -90,10 +89,6 @@ const adminRoutes = [
       {
         path: "settings",
         element: <AdminSettingsPage />,
-      },
-      {
-        path: "me",
-        element: <AdminMyProfilePage />,
       },
     ],
   },

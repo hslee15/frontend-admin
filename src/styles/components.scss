@@ -2,66 +2,54 @@
 
 // 로그인 페이지
 .login-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
   width: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: $bg-primary;
 
-  .login-container {
-    background: $bg-primary;
+  .login-layout {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  // 왼쪽: 로그인 폼 섹션
+  .login-form-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: $spacing-2xl;
-    border-radius: $border-radius;
-    box-shadow: $shadow-lg;
+    background: $bg-primary;
+  }
+
+  .login-form-container {
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
 
-    h2 {
-      text-align: center;
-      margin-bottom: $spacing-xl;
+    .login-title {
+      font-size: 3rem;
+      font-weight: 700;
       color: $text-primary;
+      margin-bottom: $spacing-sm;
+      line-height: 1.2;
     }
 
-    .sample-account-info {
-      background: rgba(37, 99, 235, 0.1);
-      border: 1px solid rgba(37, 99, 235, 0.2);
-      border-radius: $border-radius;
-      padding: $spacing-md;
-      margin-bottom: $spacing-xl;
-      font-size: $font-size-sm;
+    .login-subtitle {
+      font-size: $font-size-lg;
+      color: $text-secondary;
+      margin-bottom: $spacing-2xl;
+    }
 
-      p {
-        margin: $spacing-xs 0;
-        color: $text-secondary;
-
-        &:first-child {
-          font-weight: 600;
-          color: $primary-color;
-          margin-bottom: $spacing-sm;
-        }
+    .login-form {
+      .error-message {
+        background: rgba(239, 68, 68, 0.1);
+        color: $danger-color;
+        padding: $spacing-md;
+        border-radius: $border-radius;
+        margin-bottom: $spacing-lg;
+        font-size: $font-size-sm;
+        text-align: center;
       }
-    }
 
-    .success-message,
-    .error-message {
-      padding: $spacing-md;
-      border-radius: $border-radius;
-      margin-bottom: $spacing-md;
-      font-size: $font-size-sm;
-    }
-
-    .success-message {
-      background: rgba(16, 185, 129, 0.1);
-      color: $success-color;
-    }
-
-    .error-message {
-      background: rgba(239, 68, 68, 0.1);
-      color: $danger-color;
-    }
-
-    form {
       .form-group {
         margin-bottom: $spacing-lg;
 
@@ -69,26 +57,310 @@
           display: block;
           margin-bottom: $spacing-sm;
           font-weight: 500;
+          font-size: $font-size-sm;
+          color: $text-primary;
         }
 
-        input {
+        input[type="email"],
+        input[type="text"] {
           width: 100%;
-          padding: $spacing-sm $spacing-md;
+          padding: $spacing-md;
           border: 1px solid $border-color;
           border-radius: $border-radius;
-          font-size: $font-size-sm;
+          font-size: $font-size-base;
+          transition: $transition-base;
+          background: $bg-primary;
+          color: $text-primary;
 
           &:focus {
             outline: none;
-            border-color: $primary-color;
+            border-color: #14b8a6;
+            box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+          }
+
+          &::placeholder {
+            color: #94a3b8;
+            opacity: 1;
+            transition: opacity 0.2s ease;
+          }
+
+          &:focus::placeholder {
+            opacity: 0;
+          }
+        }
+
+        .password-input-wrapper {
+          position: relative;
+
+          input[type="password"],
+          input[type="text"] {
+            width: 100%;
+            padding: $spacing-md;
+            padding-right: 50px;
+            border: 1px solid $border-color;
+            border-radius: $border-radius;
+            font-size: $font-size-base;
+            transition: $transition-base;
+            background: $bg-primary;
+            color: $text-primary;
+
+            &:focus {
+              outline: none;
+              border-color: #14b8a6;
+              box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+            }
+
+            &::placeholder {
+              color: #94a3b8;
+              opacity: 1;
+              transition: opacity 0.2s ease;
+            }
+
+            &:focus::placeholder {
+              opacity: 0;
+            }
+          }
+
+          .password-toggle {
+            position: absolute;
+            right: $spacing-md;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: $spacing-xs;
+            color: $text-secondary;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: $transition-base;
+
+            svg {
+              width: 20px;
+              height: 20px;
+            }
+
+            &:hover {
+              color: $text-primary;
+            }
+
+            &:focus {
+              outline: none;
+              color: #14b8a6;
+            }
           }
         }
       }
 
-      button[type="submit"] {
+      .form-options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: $spacing-xl;
+
+        .checkbox-label {
+          display: flex;
+          align-items: center;
+          gap: $spacing-sm;
+          cursor: pointer;
+          font-size: $font-size-sm;
+          color: $text-primary;
+
+          input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #14b8a6;
+          }
+        }
+
+        .forgot-password-link {
+          color: $danger-color;
+          text-decoration: none;
+          font-size: $font-size-sm;
+          font-weight: 500;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .btn-login {
         width: 100%;
         padding: $spacing-md;
+        background: #14b8a6;
+        color: $text-white;
+        border: none;
+        border-radius: $border-radius;
         font-size: $font-size-base;
+        font-weight: 600;
+        cursor: pointer;
+        transition: $transition-base;
+        margin-bottom: $spacing-lg;
+
+        &:hover:not(:disabled) {
+          background: #0d9488;
+        }
+
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+      }
+
+      .signup-link {
+        text-align: center;
+        margin-bottom: $spacing-xl;
+        font-size: $font-size-sm;
+        color: $text-secondary;
+
+        .signup-link-text {
+          color: $text-primary;
+          text-decoration: none;
+          font-weight: 500;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .social-login-divider {
+        text-align: center;
+        margin: $spacing-xl 0;
+        position: relative;
+        color: $text-secondary;
+        font-size: $font-size-sm;
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          width: 40%;
+          height: 1px;
+          background: $border-color;
+        }
+
+        &::before {
+          left: 0;
+        }
+
+        &::after {
+          right: 0;
+        }
+      }
+
+      .social-login-buttons {
+        display: flex;
+        gap: $spacing-md;
+        justify-content: center;
+
+        .social-btn {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          border: 1px solid $border-color;
+          background: $bg-primary;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: $transition-base;
+          font-size: $font-size-lg;
+          font-weight: 600;
+
+          &:hover {
+            background: $bg-secondary;
+            transform: translateY(-2px);
+            box-shadow: $shadow-md;
+          }
+
+          .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          &.social-btn-facebook {
+            color: #1877f2;
+            border-color: #1877f2;
+          }
+
+          &.social-btn-google {
+            background: linear-gradient(135deg, #4285f4 0%, #34a853 50%, #fbbc05 75%, #ea4335 100%);
+            color: $text-white;
+            border: none;
+          }
+
+          &.social-btn-apple {
+            background: #000000;
+            color: $text-white;
+            border-color: #000000;
+          }
+        }
+      }
+    }
+  }
+
+  // 오른쪽: 호텔 이미지 섹션
+  .login-image-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+    position: relative;
+    overflow: hidden;
+
+    @media (max-width: 1024px) {
+      display: none;
+    }
+
+    .hotel-image-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+      .hotel-image-placeholder {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(15, 118, 110, 0.9) 0%,
+          rgba(20, 184, 166, 0.9) 100%
+        ),
+        url("data:image/svg+xml,%3Csvg width='800' height='600' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%230f766e;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%2314b8a6;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='800' height='600'/%3E%3C/svg%3E");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: $spacing-xl;
+
+        .hotel-image-content {
+          .image-carousel-indicators {
+            display: flex;
+            gap: $spacing-sm;
+
+            .indicator {
+              width: 8px;
+              height: 8px;
+              border-radius: 50%;
+              background: rgba(255, 255, 255, 0.4);
+              cursor: pointer;
+              transition: $transition-base;
+
+              &.active {
+                background: $text-white;
+                width: 24px;
+                border-radius: 4px;
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -314,6 +586,26 @@
     .label {
       width: 100%;
       margin-bottom: $spacing-xs;
+    }
+  }
+
+  .login-page {
+    .login-layout {
+      flex-direction: column;
+    }
+
+    .login-form-section {
+      padding: $spacing-xl $spacing-lg;
+    }
+
+    .login-form-container {
+      .login-title {
+        font-size: 2rem;
+      }
+
+      .login-subtitle {
+        font-size: $font-size-base;
+      }
     }
   }
 }

@@ -8,7 +8,7 @@
 
   .admin-sidebar {
     width: 260px;
-    background: $bg-dark;
+    background: linear-gradient(180deg, #0f766e 0%, #14b8a6 100%);
     color: $text-white;
     position: fixed;
     top: 0;
@@ -16,6 +16,7 @@
     height: 100vh;
     overflow-y: auto;
     z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
   }
 
   .admin-main {
@@ -28,11 +29,12 @@
 
   .admin-header {
     background: $bg-primary;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 2px solid $primary-color;
     padding: $spacing-md $spacing-xl;
     position: sticky;
     top: 0;
     z-index: 900;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   }
 
   .admin-content {
@@ -51,12 +53,49 @@
     display: flex;
     align-items: center;
     gap: $spacing-md;
+
+    h2 {
+      color: $text-primary;
+      font-weight: 700;
+      font-size: $font-size-xl;
+      
+      &::after {
+        content: "";
+        display: inline-block;
+        width: 4px;
+        height: 24px;
+        background: $primary-color;
+        margin-left: $spacing-sm;
+        vertical-align: middle;
+        border-radius: 2px;
+      }
+    }
   }
 
   .header-right {
     display: flex;
     align-items: center;
     gap: $spacing-md;
+
+    span {
+      font-weight: 500;
+      color: $text-primary;
+      padding: $spacing-xs $spacing-md;
+      background: $primary-color-light;
+      border-radius: $border-radius;
+      color: $primary-color;
+    }
+
+    .btn-outline {
+      border-color: $primary-color;
+      color: $primary-color;
+      font-weight: 500;
+
+      &:hover {
+        background: $primary-color;
+        color: $text-white;
+      }
+    }
   }
 }
 
@@ -67,11 +106,13 @@
   .sidebar-logo {
     margin-bottom: $spacing-xl;
     padding-bottom: $spacing-lg;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
     h2 {
       font-size: $font-size-xl;
       font-weight: 700;
+      color: $text-white;
+      letter-spacing: -0.5px;
     }
   }
 
@@ -87,20 +128,24 @@
       align-items: center;
       gap: $spacing-sm;
       padding: $spacing-sm $spacing-md;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.8);
       text-decoration: none;
       border-radius: $border-radius;
       transition: $transition-base;
       font-size: $font-size-sm;
+      font-weight: 500;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.15);
         color: $text-white;
+        transform: translateX(4px);
       }
 
       &.active {
-        background: $primary-color;
+        background: rgba(255, 255, 255, 0.25);
         color: $text-white;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       }
     }
   }
@@ -119,6 +164,14 @@
     padding: $spacing-lg;
     border: 1px solid $border-color;
     box-shadow: $shadow-sm;
+    transition: $transition-base;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-md;
+      border-color: $primary-color;
+    }
 
     .stat-header {
       display: flex;
@@ -542,9 +595,10 @@
   font-size: inherit;
   text-decoration: underline;
   transition: $transition-base;
+  font-weight: 500;
 
   &:hover {
-    color: darken($primary-color, 10%);
+    color: $primary-color-hover;
   }
 }
 
@@ -672,7 +726,7 @@
         &:focus {
           outline: none;
           border-color: $primary-color;
-          box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+          box-shadow: 0 0 0 3px $primary-color-light;
         }
 
         &:disabled {

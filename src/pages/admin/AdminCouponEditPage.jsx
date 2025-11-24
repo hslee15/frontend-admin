@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import AdminCouponForm from "../../components/admin/coupons/AdminCouponForm";
 import Loader from "../../components/common/Loader";
 import ErrorMessage from "../../components/common/ErrorMessage";
+import { adminCouponApi } from "../../api/adminCouponApi";
 
 const AdminCouponEditPage = () => {
   const { couponId } = useParams();
@@ -18,8 +19,8 @@ const AdminCouponEditPage = () => {
   const fetchCoupon = async () => {
     try {
       setLoading(true);
-      // TODO: API 연결
-      setCoupon({});
+      const data = await adminCouponApi.getCouponById(couponId);
+      setCoupon(data);
     } catch (err) {
       setError(err.message || "데이터를 불러오는데 실패했습니다.");
     } finally {
@@ -29,7 +30,7 @@ const AdminCouponEditPage = () => {
 
   const handleSubmit = async (formData) => {
     try {
-      // TODO: API 연결
+      await adminCouponApi.updateCoupon(couponId, formData);
       alert("쿠폰이 수정되었습니다.");
       navigate("/admin/coupons");
     } catch (err) {
