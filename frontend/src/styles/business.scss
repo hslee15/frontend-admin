@@ -829,6 +829,457 @@
   }
 }
 
+// 예약 상세 페이지 스타일
+.business-reservation-detail-page {
+  .reservation-detail {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+
+    .detail-section {
+      background-color: $bg-primary;
+      border-radius: $border-radius;
+      box-shadow: $shadow-sm;
+      padding: $spacing-xl;
+      border: 1px solid $border-color;
+
+      h2 {
+        font-size: $font-size-xl;
+        font-weight: 600;
+        color: $text-primary;
+        margin: 0 0 $spacing-lg 0;
+        padding-bottom: $spacing-md;
+        border-bottom: 2px solid $border-color;
+      }
+
+      .detail-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: $spacing-lg;
+
+        .detail-item {
+          display: flex;
+          flex-direction: column;
+          gap: $spacing-xs;
+
+          label {
+            font-size: $font-size-sm;
+            font-weight: 600;
+            color: $text-secondary;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+
+          span {
+            font-size: $font-size-base;
+            color: $text-primary;
+            font-weight: 500;
+            padding: $spacing-sm $spacing-md;
+            background-color: $bg-secondary;
+            border-radius: 6px;
+            min-height: 2.5em;
+            display: flex;
+            align-items: center;
+          }
+
+          &.total {
+            grid-column: 1 / -1;
+            margin-top: $spacing-md;
+            padding-top: $spacing-lg;
+            border-top: 2px solid $border-color;
+
+            label {
+              font-size: $font-size-base;
+              color: $text-primary;
+              font-weight: 700;
+            }
+
+            span {
+              font-size: $font-size-xl;
+              font-weight: 700;
+              color: $primary-color;
+              background-color: rgba(37, 99, 235, 0.1);
+              padding: $spacing-md $spacing-lg;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 통계 페이지 스타일
+.business-statistics-page {
+  .statistics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: $spacing-xl;
+
+    .stat-card {
+      background-color: $bg-primary;
+      border-radius: $border-radius;
+      box-shadow: $shadow-sm;
+      padding: $spacing-xl;
+      border: 1px solid $border-color;
+      transition: $transition-base;
+      position: relative;
+      overflow: hidden;
+
+      &:hover {
+        box-shadow: $shadow-md;
+        transform: translateY(-2px);
+      }
+
+      // 카드별 색상 구분
+      &:nth-child(1) {
+        border-top: 4px solid #10b981; // 총 매출 - 초록색
+        
+        &::before {
+          content: "💰";
+          position: absolute;
+          top: $spacing-lg;
+          right: $spacing-lg;
+          font-size: 3rem;
+          opacity: 0.1;
+        }
+
+        .stat-value {
+          color: #10b981;
+        }
+      }
+
+      &:nth-child(2) {
+        border-top: 4px solid #3b82f6; // 예약 건수 - 파란색
+        
+        &::before {
+          content: "📅";
+          position: absolute;
+          top: $spacing-lg;
+          right: $spacing-lg;
+          font-size: 3rem;
+          opacity: 0.1;
+        }
+
+        .stat-value {
+          color: #3b82f6;
+        }
+      }
+
+      &:nth-child(3) {
+        border-top: 4px solid #f59e0b; // 객실 점유율 - 주황색
+        
+        &::before {
+          content: "🏨";
+          position: absolute;
+          top: $spacing-lg;
+          right: $spacing-lg;
+          font-size: 3rem;
+          opacity: 0.1;
+        }
+
+        .stat-value {
+          color: #f59e0b;
+        }
+      }
+
+      h3 {
+        font-size: $font-size-lg;
+        font-weight: 600;
+        color: $text-primary;
+        margin: 0 0 $spacing-lg 0;
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+      }
+
+      .stat-value {
+        font-size: $font-size-3xl;
+        font-weight: 700;
+        color: $text-primary;
+        margin-bottom: $spacing-lg;
+        line-height: 1.2;
+      }
+
+      .stat-detail {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-sm;
+        padding-top: $spacing-lg;
+        border-top: 1px solid $border-color;
+
+        span {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: $font-size-sm;
+          color: $text-secondary;
+          padding: $spacing-xs 0;
+
+          &::before {
+            content: "•";
+            color: $primary-color;
+            margin-right: $spacing-sm;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 정산 관리 페이지 스타일
+.business-settlement-page {
+  .settlement-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+
+    .settlement-card {
+      background-color: $bg-primary;
+      border-radius: $border-radius;
+      box-shadow: $shadow-sm;
+      padding: $spacing-xl;
+      border: 1px solid $border-color;
+      border-left: 4px solid $border-color;
+      transition: $transition-base;
+      position: relative;
+      overflow: hidden;
+
+      &:hover {
+        box-shadow: $shadow-md;
+        transform: translateY(-2px);
+        border-color: rgba(37, 99, 235, 0.2);
+      }
+
+      &::before {
+        content: "💳";
+        position: absolute;
+        top: $spacing-lg;
+        right: $spacing-lg;
+        font-size: 3rem;
+        opacity: 0.1;
+      }
+
+      // 완료된 정산은 초록색 테두리
+      &:has(.badge-success) {
+        border-left-color: #10b981;
+      }
+
+      // 대기 중인 정산은 주황색 테두리
+      &:has(.badge-warning) {
+        border-left-color: #f59e0b;
+      }
+
+      .settlement-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: $spacing-xl;
+        padding-bottom: $spacing-lg;
+        border-bottom: 2px solid $border-color;
+
+        h3 {
+          font-size: $font-size-xl;
+          font-weight: 700;
+          color: $text-primary;
+          margin: 0;
+          display: flex;
+          align-items: center;
+          gap: $spacing-sm;
+        }
+      }
+
+      .settlement-details {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: $spacing-lg;
+
+        .settlement-item {
+          display: flex;
+          flex-direction: column;
+          gap: $spacing-xs;
+          padding: $spacing-md;
+          background-color: $bg-secondary;
+          border-radius: 8px;
+          transition: $transition-base;
+
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+          }
+
+          label {
+            font-size: $font-size-sm;
+            font-weight: 600;
+            color: $text-secondary;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: $spacing-xs;
+          }
+
+          span {
+            font-size: $font-size-lg;
+            font-weight: 600;
+            color: $text-primary;
+            word-break: break-word;
+          }
+
+          // 수수료와 세금 항목 (label에 "수수료" 또는 "세금"이 포함된 경우)
+          &:nth-child(2),
+          &:nth-child(3) {
+            span {
+              color: #ef4444;
+            }
+          }
+
+          &.total {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0.05) 100%);
+            border: 2px solid rgba(37, 99, 235, 0.2);
+            padding: $spacing-lg;
+            margin-top: $spacing-md;
+
+            label {
+              font-size: $font-size-base;
+              color: $primary-color;
+              font-weight: 700;
+            }
+
+            span {
+              font-size: $font-size-2xl;
+              font-weight: 700;
+              color: $primary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 내 정보 페이지 스타일
+.business-profile-page {
+  .profile-section {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+
+    .profile-card {
+      background-color: $bg-primary;
+      border-radius: $border-radius;
+      box-shadow: $shadow-sm;
+      padding: $spacing-xl;
+      border: 1px solid $border-color;
+      transition: $transition-base;
+      position: relative;
+      overflow: hidden;
+
+      &:hover {
+        box-shadow: $shadow-md;
+        border-color: rgba(37, 99, 235, 0.2);
+      }
+
+      &::before {
+        content: "👤";
+        position: absolute;
+        top: $spacing-lg;
+        right: $spacing-lg;
+        font-size: 3rem;
+        opacity: 0.1;
+      }
+
+      h2 {
+        font-size: $font-size-xl;
+        font-weight: 700;
+        color: $text-primary;
+        margin: 0 0 $spacing-xl 0;
+        padding-bottom: $spacing-lg;
+        border-bottom: 2px solid $border-color;
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+      }
+
+      .profile-details {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: $spacing-lg;
+
+        .detail-item {
+          display: flex;
+          flex-direction: column;
+          gap: $spacing-xs;
+          padding: $spacing-md;
+          background-color: $bg-secondary;
+          border-radius: 8px;
+          transition: $transition-base;
+
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+            transform: translateX(4px);
+          }
+
+          label {
+            font-size: $font-size-sm;
+            font-weight: 600;
+            color: $text-secondary;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: $spacing-xs;
+          }
+
+          span {
+            font-size: $font-size-base;
+            font-weight: 500;
+            color: $text-primary;
+            word-break: break-word;
+            padding: $spacing-xs 0;
+            min-height: 1.5em;
+            display: flex;
+            align-items: center;
+
+            &.status-approved {
+              color: #10b981;
+              font-weight: 600;
+              display: inline-flex;
+              align-items: center;
+              gap: $spacing-xs;
+
+              &::before {
+                content: "✓";
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                background-color: #10b981;
+                color: white;
+                border-radius: 50%;
+                font-size: $font-size-xs;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+              }
+            }
+
+            &.status-pending {
+              color: #f59e0b;
+              font-weight: 600;
+              display: inline-flex;
+              align-items: center;
+              gap: $spacing-xs;
+
+              &::before {
+                content: "⏳";
+                display: inline-block;
+                font-size: $font-size-base;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 // 빈 상태
 .empty-state {
   text-align: center;
