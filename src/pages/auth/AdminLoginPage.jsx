@@ -123,13 +123,6 @@ const AdminLoginPage = () => {
                 {loading ? "로그인 중..." : "Login"}
               </button>
 
-              <div className="signup-link">
-                <span>계정이 없으신가요? </span>
-                <Link to="#" className="signup-link-text">
-                  회원가입
-                </Link>
-              </div>
-
               <div className="social-login-divider">
                 <span>Or login with</span>
               </div>

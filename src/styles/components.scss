@@ -4,7 +4,7 @@
 .login-page {
   min-height: 100vh;
   width: 100%;
-  background: $bg-primary;
+  background: $bg-secondary;
 
   .login-layout {
     display: flex;
@@ -18,7 +18,7 @@
     align-items: center;
     justify-content: center;
     padding: $spacing-2xl;
-    background: $bg-primary;
+    background: $bg-secondary;
   }
 
   .login-form-container {
